@@ -1,10 +1,7 @@
 const { gql } = require('apollo-server');
 
 const typeDefs = gql`
-    type Query { 
-       itemsForBikes: Item!
-    }
-
+   
     type Item{
         last_updated: Int
         ttl: Int
@@ -24,6 +21,25 @@ const typeDefs = gql`
         android: String
         ios: String
     }
+
+    input LoginInput {
+        username: String
+        password: String
+    }
+
+    type Query { 
+        itemsForBikes: Item!
+        }
+
+    type User{
+        id: String
+        username: String
+        password: String
+        token: String
+    }
+    type Mutation {
+         loginUser(loginInput: LoginInput): User
+         }
 `;
 
 module.exports = typeDefs;
